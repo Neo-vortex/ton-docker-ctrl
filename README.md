@@ -23,7 +23,7 @@ Build environment variables (are configured in the .env file):
 * **DUMP** - Use pre-packaged dump. Reduces duration of initial synchronization, but it takes time to download the dump. You can view the download status in the logs `docker compose logs -f`. (default **false**).
 
 ## Run MyTonCtrl v2 in docker:
-* Run `docker run -d --name ton-node -v /mnt/data/ton-work1:/var/ton-work -it ghcr.io/neodix42/ton-docker-ctrl:v2024.08`
+* Run `docker run -d --name ton-node -v /mnt/data/ton-work1:/var/ton-work -it ghcr.io/neodix42/ton-docker-ctrl:latest`
 
 ## Build Docker image from sources and run MyTonCtrl v2:
 
@@ -38,3 +38,26 @@ Build environment variables (are configured in the .env file):
 
 * Build new image: `docker compose build ton-node`
 * Run new version: `docker compose up -d`
+
+## Migrate non-Docker fullnode or validator to a dockerized MyTonCtrl v2
+
+Specify paths to TON binaries and sources, as well as to TON work directory, but most importantly to MyTonCtrl settings and wallets. 
+
+```bash
+docker run -d --name ton-node --restart always \
+-v /mnt/data/ton-work:/var/ton-work \
+-v /usr/bin/ton:/usr/bin/ton \
+-v /usr/src/ton:/usr/src/ton \
+-v /home/<USER>/.local/share:/usr/local/bin \
+ghcr.io/neodix42/ton-docker-ctrl:latest
+```
+
+Read the logs
+```bash
+docker logs ton-node
+```
+
+Get inside the container and run MyTonCtrl
+```bash
+docker exec -ti ton-node bash
+```
