@@ -1,7 +1,7 @@
 FROM ghcr.io/neodix42/ton:latest
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y wget gcc libsecp256k1-dev libsodium-dev liblz4-dev python3-dev python3-pip sudo git fio iproute2 plzip pv curl libjemalloc-dev ninja-build rocksdb-tools \
+    && apt-get install --no-install-recommends -y wget gcc openssl libsecp256k1-dev libsodium-dev liblz4-dev python3-dev python3-pip sudo git fio iproute2 plzip pv curl libjemalloc-dev ninja-build rocksdb-tools \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /var/ton-work/db/static /var/ton-work/db/import /var/ton-work/db/keyring /usr/bin/ton /usr/bin/ton/lite-client /usr/bin/ton/validator-engine /usr/bin/ton/validator-engine-console /usr/bin/ton/utils /usr/src/ton/crypto/fift/lib/ /usr/src/ton/crypto/smartcont /usr/bin/ton/crypto \
     && cd /usr/src/ton && git init && git remote add origin https://github.com/ton-blockchain/ton.git
@@ -10,7 +10,7 @@ ARG MYTONCTRL_VERSION=master
 ARG TELEMETRY=false
 ARG DUMP=false
 ARG MODE=validator
-ARG IGNORE_MINIMAL_REQS=true
+ARG IGNORE_MINIMAL_REQS=false
 ARG GLOBAL_CONFIG_URL=https://ton.org/global.config.json
 
 RUN cp /usr/local/bin/lite-client /usr/bin/ton/lite-client/ \
