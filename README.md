@@ -18,7 +18,7 @@ Build environment variables (are configured in the .env file):
 * **GLOBAL_CONFIG_URL** - URL of the TON blockchain configuration (default: [Mainnet](https://ton.org/global.config.json))
 * **MYTONCTRL_VERSION** - MyTonCtrl build branch (default **master**)
 * **TELEMETRY** - Enable/Disable telemetry (default **true**)
-* **IGNORE_MINIMAL_REQS** - Ignore hardware requirements (default **false**) 
+* **IGNORE_MINIMAL_REQS** - Ignore hardware requirements (default **true**) 
 * **MODE** - Install MyTonCtrl with specified mode (validator or liteserver, default **validator**)
 * **DUMP** - Use pre-packaged dump. Reduces duration of initial synchronization, but it takes time to download the dump. You can view the download status in the logs `docker compose logs -f`. (default **false**).
 

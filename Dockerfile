@@ -10,7 +10,7 @@ ARG MYTONCTRL_VERSION=master
 ARG TELEMETRY=false
 ARG DUMP=false
 ARG MODE=validator
-ARG IGNORE_MINIMAL_REQS=false
+ARG IGNORE_MINIMAL_REQS=true
 ARG GLOBAL_CONFIG_URL=https://ton.org/global.config.json
 
 RUN cp /usr/local/bin/lite-client /usr/bin/ton/lite-client/ \
