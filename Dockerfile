@@ -6,6 +6,15 @@ RUN apt-get update \
     && mkdir -p /var/ton-work/db/static /var/ton-work/db/import /var/ton-work/db/keyring /usr/bin/ton /usr/bin/ton/lite-client /usr/bin/ton/validator-engine /usr/bin/ton/validator-engine-console /usr/bin/ton/utils /usr/src/ton/crypto/fift/lib/ /usr/src/ton/crypto/smartcont /usr/bin/ton/crypto \
     && cd /usr/src/ton && git init && git remote add origin https://github.com/ton-blockchain/ton.git
 
+RUN wget https://apt.llvm.org/llvm.sh && \
+    chmod +x llvm.sh && \
+    ./llvm.sh 16 all && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV CC=/usr/bin/clang-16
+ENV CXX=/usr/bin/clang++-16
+ENV CCACHE_DISABLE=1
+
 ARG MYTONCTRL_VERSION=master
 ARG TELEMETRY=false
 ARG DUMP=false
