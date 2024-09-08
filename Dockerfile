@@ -9,11 +9,8 @@ RUN apt-get update \
 RUN wget https://apt.llvm.org/llvm.sh && \
     chmod +x llvm.sh && \
     ./llvm.sh 16 all && \
-    rm -rf /var/lib/apt/lists/*
-
-ENV CC=/usr/bin/clang-16
-ENV CXX=/usr/bin/clang++-16
-ENV CCACHE_DISABLE=1
+    ln /usr/bin/clang-16 /usr/bin/clang && \
+    ln /usr/bin/clang++-16 /usr/bin/clang++
 
 ARG MYTONCTRL_VERSION=master
 ARG TELEMETRY=false
