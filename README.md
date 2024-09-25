@@ -29,7 +29,7 @@ Build environment variables (are configured in the .env file):
 
 * Clone: `git clone https://github.com/ton-community/ton-docker-ctrl.git && cd ./ton-docker-ctrl`
 * Run: `docker compose up --build -d`
-* Connect `docker compose exec -it node bash -c "mytonctrl"`
+* Connect `docker compose exec -it ton-node bash -c "mytonctrl"`
 
 ## Upgrade MyTonCtrl docker image from repository:
 * Pull docker image: `docker pull docker pull ghcr.io/ton-community/ton-docker-ctrl:latest`
